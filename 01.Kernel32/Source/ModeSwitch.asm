@@ -14,8 +14,8 @@ SECTION .text       ; text 섹션(세그먼트)을 정의
 ; CPUID를 반환
 ;   PARAM: DWORD dwEAX, DWORD* pdwEAX,* pdwEBX,* pdwECX,* pdwEDX
 kReadCPUID:
-    push ebp        ; 베이스 포인터 레지스터(EBP)를 스택에 삽입
-    mov ebp, esp    ; 베이스 포인터 레지스터(EBP)에 스택 포인터 레지스터(ESP)의 값을 설정
+    push ebp        ; 베이스 포인터 레지스터(BP)를 스택에 삽입
+    mov ebp, esp    ; 베이스 포인터 레지스터(BP)에 스택 포인터 레지스터(SP)의 값을 설정
     push eax        ; 함수에서 임시로 사용하는 레지스터로 함수의 마지막 부분에서
     push ebx        ; 스택에 삽입된 값을 꺼내 원래 값으로 복원
     push ecx
@@ -55,7 +55,7 @@ kReadCPUID:
     pop ecx     ; 스택은 가장 마지막에 들어간 데이터가 가장 먼저 나오는
     pop ebx     ; 자료구조(Last-In, First-Out)이므로 삽입(push)의 역순으로
     pop eax     ; 제거(pop) 해야 함
-    pop ebp     ; 베이스 포인터 레지스터(EBP) 복원
+    pop ebp     ; 베이스 포인터 레지스터(BP) 복원
     ret         ; 함수를 호출한 다음 코드의 위치로 복귀
     
 ; IA-32e 모드로 전환하고 64비트 커널을 수행

@@ -37,9 +37,9 @@ int main(int argc, char* argv[])
     int iSourceSize;
         
     // 커맨드 라인 옵션 검사
-    if( argc < 3 )
+    if( argc < 4 )
     {
-        fprintf( stderr, "[ERROR] ImageMaker.exe BootLoader.bin Kernel32.bin\n" );
+        fprintf( stderr, "[ERROR] ImageMaker.exe BootLoader.bin Kernel32.bin Kernel64.bin\n" );
         exit( -1 );
     }
     
@@ -84,7 +84,7 @@ int main(int argc, char* argv[])
     
     // 파일 크기를 섹터 크기인 512바이트로 맞추기 위해 나머지 부분을 0x00 으로 채움
     iKernel32SectorCount = AdjustInSectorSize( iTargetFd, iSourceSize );
-    printf( "[INFO] %s size = [%d] and sector Count = [%d]\n",
+    printf( "[INFO] %s size = [%d] and sector count = [%d]\n",
                 argv[ 2 ], iSourceSize, iKernel32SectorCount );
 
     //--------------------------------------------------------------------------
