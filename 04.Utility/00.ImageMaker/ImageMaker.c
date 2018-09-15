@@ -20,7 +20,8 @@
 
 // 함수 선언
 int AdjustInSectorSize( int iFd, int iSourceSize );
-void WriteKernelInformation( int iTargetFd, int iKernelSectorCount );
+void WriteKernelInformation( int iTargetFd, int iTotalKernelSectorCount,
+        int iKernel32SectorCount );
 int CopyFile( int iSourceFd, int iTargetFd );
 
 /**
@@ -90,7 +91,7 @@ int main(int argc, char* argv[])
     // 64비트 커널 파일을 열어서 모든 내용을 디스크 이미지 파일로 복사
     //--------------------------------------------------------------------------
     printf( "[INFO] Copy IA-32e mode kernel to image file\n" );
-    if( ( iSourceFd = open( argv[ 3 ], O_RDONLY | O_BINARY ) ) == -1 )
+    if( ( iSourceFd = open( argv[ 3 ], O_RDONLY ) ) == -1 )
     {
         fprintf( stderr, "[ERROR] %s open fail\n", argv[ 3 ] );
         exit( -1 );
