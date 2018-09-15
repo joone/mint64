@@ -15,7 +15,7 @@ SECTION .text       ; text 섹션(세그먼트)을 정의
 ;   PARAM: DWORD dwEAX, DWORD* pdwEAX,* pdwEBX,* pdwECX,* pdwEDX
 kReadCPUID:
     push ebp        ; 베이스 포인터 레지스터(EBP)를 스택에 삽입
-    mov ebp, esp    ; 베이스 포인터 레지스터(EBP)에 스택 포인터 레지스터(SP)의 값을 설정
+    mov ebp, esp    ; 베이스 포인터 레지스터(EBP)에 스택 포인터 레지스터(ESP)의 값을 설정
     push eax        ; 함수에서 임시로 사용하는 레지스터로 함수의 마지막 부분에서
     push ebx        ; 스택에 삽입된 값을 꺼내 원래 값으로 복원
     push ecx
